@@ -1,0 +1,35 @@
+﻿<Window x:Class="InvoiceDownloader.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:InvoiceDownloader"
+        mc:Ignorable="d"
+        Title="Window1" Height="350" Width="600">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- Row 0 -->
+        <Button x:Name="storeButton" FontSize="22" FontWeight="Bold" FontStyle="Italic" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Height="70" Width="150" />
+
+        <!-- Row 1 -->
+        <!--<Button Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Height="60" Width="120" />-->
+        <Button Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Height="30" Width="90" />
+        <!--<Button Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Height="60" Width="120" />-->
+        <DatePicker Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Height="30" Width="150" />
+        <DatePicker Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Height="30" Width="150" />
+
+        <!-- Row 2 -->
+        <Button Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Height="40" Width="90" />
+        <Button Grid.Row="2" Grid.Column="2" Content="Zpět" Background="Red" VerticalAlignment="Center" HorizontalAlignment="Center" Height="40" Width="70" />
+    </Grid>
+</Window>

@@ -1,0 +1,127 @@
+﻿<Window x:Class="InvoiceDownloader.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:InvoiceDownloader"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+
+
+        </Grid.RowDefinitions>
+
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+
+            <ColumnDefinition Width="1.1*"/>
+
+        </Grid.ColumnDefinitions>
+
+        <Line X1="50" X2="50" Y1="0" Y2="450" Stroke="Black" StrokeThickness="2" Grid.Column="2"  Grid.RowSpan="4" HorizontalAlignment="Left" Margin="-50,0,0,0" Grid.ColumnSpan="2" />
+
+
+
+        <Line X1="0" X2="800" Y1="50" Y2="50" Stroke="Black" StrokeThickness="2"  Grid.RowSpan="3" Grid.Row="2" Grid.ColumnSpan="2" Margin="-50,0,0,0"/>
+
+        <Button Content="Nike" FontSize="22" FontWeight="Bold" FontStyle="Italic" VerticalAlignment="Center" HorizontalAlignment="Center" Height="70" Width="150" IsEnabled="{Binding IsAccountSelected}" Click="StoreButton_Click"/>
+        <Button Grid.Column="1" Grid.Row="0" Content="About You" FontSize="22" FontWeight="Bold" FontStyle="Italic" VerticalAlignment="Center" HorizontalAlignment="Center" Height="70" Width="150" IsEnabled="{Binding IsAccountSelected}" Click="StoreButton_Click"/>
+        <Button Grid.Column="1" Grid.Row="1" Content="Zalando" FontSize="22" FontWeight="Bold" FontStyle="Italic" VerticalAlignment="Center" HorizontalAlignment="Center" Height="70" Width="150" IsEnabled="{Binding IsAccountSelected}" Click="StoreButton_Click"/>
+        <Button Grid.Column="0" Grid.Row="1" Content="Foot Locker" FontSize="22" FontWeight="Bold" FontStyle="Italic" VerticalAlignment="Center" HorizontalAlignment="Center" Height="70" Width="150" IsEnabled="{Binding IsAccountSelected}" Click="StoreButton_Click"/>
+        <TextBlock TextWrapping="Wrap" Text="Accounts" FontWeight="Bold" FontSize="18" Grid.Column="2" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="10"/>
+
+        <Grid x:Name="EmailGrid" Grid.Row="0" Grid.Column="2" Grid.RowSpan="4">
+
+
+            <Grid.RowDefinitions>
+
+                <RowDefinition/>
+                <RowDefinition Height="43.404"/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+
+
+            </Grid.RowDefinitions>
+
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+
+
+            </Grid.ColumnDefinitions>
+
+           
+            <Line X1="0" X2="800" Y1="50" Y2="50" Stroke="Black" StrokeThickness="2" Grid.Column="2" Margin="0,-5,0,0" Grid.RowSpan="4" />
+            <!-- Add PreviewMouseDown event to each TextBlock -->
+
+            <TextBlock TextWrapping="Wrap"  FontWeight="Bold"  FontSize="13" TextAlignment="Center" Grid.Row="1" VerticalAlignment="Center" PreviewMouseDown="TextBlock_PreviewMouseDown"/>
+            <TextBlock TextWrapping="Wrap" FontWeight="Bold"  FontSize="13" TextAlignment="Center" Grid.Row="2" VerticalAlignment="Center" PreviewMouseDown="TextBlock_PreviewMouseDown"/>
+            <TextBlock TextWrapping="Wrap" FontWeight="Bold"  FontSize="13" TextAlignment="Center" Grid.Row="3" VerticalAlignment="Center" PreviewMouseDown="TextBlock_PreviewMouseDown"/>
+            <TextBlock TextWrapping="Wrap"  FontWeight="Bold"  FontSize="13" TextAlignment="Center" Grid.Row="4" VerticalAlignment="Center" PreviewMouseDown="TextBlock_PreviewMouseDown"/>
+            <TextBlock TextWrapping="Wrap"  FontWeight="Bold"  FontSize="13" TextAlignment="Center" Grid.Row="5" VerticalAlignment="Center" PreviewMouseDown="TextBlock_PreviewMouseDown"/>
+            <TextBlock TextWrapping="Wrap" FontWeight="Bold"  FontSize="13" TextAlignment="Center" Grid.Row="6" VerticalAlignment="Center" PreviewMouseDown="TextBlock_PreviewMouseDown"/>
+
+            <Button Margin="233,14,25,10" Grid.Row="1" Background="Red" Click="RemoveButton_Click" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent.Children[1]}" />
+            <Button Margin="233,14,25,10" Grid.Row="2" Background="Red" Click="RemoveButton_Click" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent.Children[2]}" />
+            <Button Margin="233,14,25,10" Grid.Row="3" Background="Red" Click="RemoveButton_Click" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent.Children[3]}" />
+            <Button Margin="233,14,25,10" Grid.Row="4" Background="Red" Click="RemoveButton_Click" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent.Children[4]}" />
+            <Button Margin="233,14,25,10" Grid.Row="5" Background="Red" Click="RemoveButton_Click" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent.Children[5]}" />
+            <Button Margin="233,14,25,10" Grid.Row="6" Background="Red" Click="RemoveButton_Click" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=Parent.Children[6]}" />
+        </Grid>
+        
+
+
+
+
+
+
+
+        <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,54,0,0" Grid.RowSpan="2">
+
+
+            <Grid.RowDefinitions>
+
+
+                
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+
+            </Grid.RowDefinitions>
+
+
+            <Grid.ColumnDefinitions>
+
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+
+            </Grid.ColumnDefinitions>
+
+
+            <TextBlock TextWrapping="Wrap" Text="Přidat účet" Grid.RowSpan="1" Grid.Row="0" Grid.ColumnSpan="2" TextAlignment="Center" VerticalAlignment="Bottom" FontSize="22" FontWeight="Bold" />
+            <TextBox x:Name="emailTextBox" Text="Email" Grid.RowSpan="1" Grid.Row="1" Grid.ColumnSpan="1" TextAlignment="Center" VerticalAlignment="Center" Width="180" FontWeight="Bold" FontSize="16" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"/>
+            <TextBox x:Name="passwordTextBox" Text="Heslo" Grid.RowSpan="1" Grid.Row="1" Grid.Column="2" TextAlignment="Center" VerticalAlignment="Center" Width="180" FontWeight="Bold" FontSize="16" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus" />
+            
+            <Button Content="Potvrdit" Grid.RowSpan="1" Grid.Row="2" Grid.ColumnSpan="2" VerticalAlignment="Center" Width="100" Height="30" Click="ConfirmButton_Click"/>
+
+
+        </Grid>
+
+
+
+    </Grid>
+</Window>
