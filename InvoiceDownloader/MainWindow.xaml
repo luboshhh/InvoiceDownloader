@@ -34,8 +34,8 @@
 
         <Button Content="Nike" FontSize="22" FontWeight="Bold" FontStyle="Italic" VerticalAlignment="Center" HorizontalAlignment="Center" Height="70" Width="150" IsEnabled="{Binding IsAccountSelected}" Click="StoreButton_Click"/>
         <Button Grid.Column="1" Grid.Row="0" Content="About You" FontSize="22" FontWeight="Bold" FontStyle="Italic" VerticalAlignment="Center" HorizontalAlignment="Center" Height="70" Width="150" IsEnabled="{Binding IsAccountSelected}" Click="StoreButton_Click"/>
-        <Button Grid.Column="1" Grid.Row="1" Content="Zalando" FontSize="22" FontWeight="Bold" FontStyle="Italic" VerticalAlignment="Center" HorizontalAlignment="Center" Height="70" Width="150" IsEnabled="{Binding IsAccountSelected}" Click="StoreButton_Click"/>
-        <Button Grid.Column="0" Grid.Row="1" Content="Foot Locker" FontSize="22" FontWeight="Bold" FontStyle="Italic" VerticalAlignment="Center" HorizontalAlignment="Center" Height="70" Width="150" IsEnabled="{Binding IsAccountSelected}" Click="StoreButton_Click"/>
+        <Button Grid.Column="1" Grid.Row="1" Content="LVR" FontSize="22" FontWeight="Bold" FontStyle="Italic" VerticalAlignment="Center" HorizontalAlignment="Center" Height="70" Width="150" IsEnabled="{Binding IsAccountSelected}" Click="StoreButton_Click"/>
+        <Button Grid.Column="0" Grid.Row="1" Content="Adidas" FontSize="22" FontWeight="Bold" FontStyle="Italic" VerticalAlignment="Center" HorizontalAlignment="Center" Height="70" Width="150" IsEnabled="{Binding IsAccountSelected}" Click="StoreButton_Click"/>
         <TextBlock TextWrapping="Wrap" Text="Accounts" FontWeight="Bold" FontSize="18" Grid.Column="2" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="10"/>
 
         <Grid x:Name="EmailGrid" Grid.Row="0" Grid.Column="2" Grid.RowSpan="4">
@@ -66,7 +66,7 @@
 
            
             <Line X1="0" X2="800" Y1="50" Y2="50" Stroke="Black" StrokeThickness="2" Grid.Column="2" Margin="0,-5,0,0" Grid.RowSpan="4" />
-            <!-- Add PreviewMouseDown event to each TextBlock -->
+           
 
             <TextBlock TextWrapping="Wrap"  FontWeight="Bold"  FontSize="13" TextAlignment="Center" Grid.Row="1" VerticalAlignment="Center" PreviewMouseDown="TextBlock_PreviewMouseDown"/>
             <TextBlock TextWrapping="Wrap" FontWeight="Bold"  FontSize="13" TextAlignment="Center" Grid.Row="2" VerticalAlignment="Center" PreviewMouseDown="TextBlock_PreviewMouseDown"/>

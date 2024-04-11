@@ -18,18 +18,19 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <!-- Row 0 -->
+        
         <Button x:Name="storeButton" FontSize="22" FontWeight="Bold" FontStyle="Italic" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Height="70" Width="150" />
 
-        <!-- Row 1 -->
-        <!--<Button Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Height="60" Width="120" />-->
-        <Button Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Height="30" Width="90" />
-        <!--<Button Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Height="60" Width="120" />-->
-        <DatePicker Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Height="30" Width="150" />
-        <DatePicker Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Height="30" Width="150" />
+         <Button Content="Všechny maily" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Height="30" Width="90" Click="AllMailsButton_Click"/>
+      
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="Faktury ze dne" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,50" FontWeight="Bold"/>
+        <DatePicker x:Name="DatePickerFromDay" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Height="30" Width="150" SelectedDateChanged="DatePickerFrom_SelectedDateChanged"/>
 
-        <!-- Row 2 -->
-        <Button Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Height="40" Width="90" />
-        <Button Grid.Row="2" Grid.Column="2" Content="Zpět" Background="Red" VerticalAlignment="Center" HorizontalAlignment="Center" Height="40" Width="70" />
+        <TextBlock Grid.Row="1" Grid.Column="2" Text="Faktury od data" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,50" FontWeight="Bold"/>
+        <DatePicker x:Name="DatePickerFrom" Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Height="30" Width="150" SelectedDateChanged="DatePickerFromDay_SelectedDateChanged"/>
+
+     
+        <Button x:Name="Potvrdit" Content="Potvrdit" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Height="40" Width="90" Click="Potvrdit_Click" IsEnabled="False"/>
+        <Button x:Name="Zpet" Grid.Row="2" Grid.Column="2" Content="Zpět" Background="Red" VerticalAlignment="Center" HorizontalAlignment="Center" Height="40" Width="70" Click="Zpet_Click"/>
     </Grid>
 </Window>

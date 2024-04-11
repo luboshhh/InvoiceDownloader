@@ -12,16 +12,20 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
+
+
+
+// Jelikož odjíždím na dovolenou, musím program odevzdat dřív. Podařilo se mi program zprovoznit zatím pouze pro Gmail. Spoustu hodin jsem se snažil přijít na to, proč to nefunguje a nejspíš knihovna, kterou jsem si vybral nepodporuje Seznam. V kódu jsem ale možnost pro Seznam maily nechal, protože ji budu pravděpodobně předělávat mimo projekt s jinou knihovnou pro reálné využití. 
 
 namespace InvoiceDownloader
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
+   
     public partial class MainWindow : Window
     {
         private const string AccountsFilePath = "accounts.txt";
+       
+       
+
         public static SelectedAccount selectedAccount { get; set; }
         public bool IsAccountSelected { get; set; } = false;
 
@@ -29,8 +33,11 @@ namespace InvoiceDownloader
         {
             InitializeComponent();
             LoadAccounts();
-            //DataContext = this;
             InitializeSelectedAccount();
+            
+            CreateFiles();
+
+
         }
 
 
@@ -40,24 +47,27 @@ namespace InvoiceDownloader
         {
             try
             {
-                // Pokud soubor neexistuje, není třeba provádět načítání
+                
                 if (!File.Exists(AccountsFilePath))
                     using (StreamWriter writer = new StreamWriter(AccountsFilePath))
                     {
-                        // Zde můžete přidat výchozí obsah souboru, pokud je to žádoucí
+                        
                     }
 
-                // Načíst e-maily ze souboru
+              
+
+
+                
                 string[] lines = File.ReadAllLines(AccountsFilePath);
 
-                // Projít každý řádek a zobrazit e-mail v odpovídajícím TextBlocku
+                
                 for (int i = 0; i < lines.Length; i++)
                 {
-                    // Pokud index přesahuje počet TextBlocků, přestat načítat
+                    
                     if (i >= EmailGrid.Children.Count)
                         break;
 
-                    // Získat TextBlock pro e-mail
+                    
                     if (EmailGrid.Children[i+1] is TextBlock textBlock)
                     {
                         textBlock.Text = lines[i].Split('_')[0];
@@ -76,8 +86,25 @@ namespace InvoiceDownloader
             {
                 Email = null,
                 Password = null,
-                Provider = null
+                Provider = null,
+                Store = null,
+                Date = null
             };
+        }
+
+        private void CreateFiles()
+        {
+            string[] folderName = { "Nike", "About You", "LVR", "Adidas" };
+            string folderPath;
+
+            foreach (string folder in folderName)
+            {
+                folderPath = Path.Combine("Invoices", folder);
+                if (!Directory.Exists(folderPath))
+                {
+                    Directory.CreateDirectory(folderPath);
+                }
+            }
         }
 
         private void TextBlock_PreviewMouseDown(object sender, MouseButtonEventArgs e)
@@ -86,14 +113,14 @@ namespace InvoiceDownloader
             string email = textBlock.Text;
            
 
-            // Search for the email in the accounts.txt file
+           
             string[] lines = File.ReadAllLines(AccountsFilePath);
             foreach (string line in lines)
             {
                 string[] parts = line.Split('_');
                 if (parts[0] == email)
                 {
-                    // Update SelectedAccount
+                    
                     selectedAccount.Email = parts[0];
                     selectedAccount.Password = parts[1];
                     selectedAccount.Provider = parts[2];
@@ -136,7 +163,7 @@ namespace InvoiceDownloader
             }
         }
 
-        // Helper method to get the remove button corresponding to the given row
+        
         private Button GetRemoveButtonForTextBlock(int row)
         {
             foreach (var child in EmailGrid.Children)
@@ -207,7 +234,7 @@ namespace InvoiceDownloader
 
             
 
-            // Zkontrolovat, jestli se v mailu nachází "@", "seznam" nebo "gmail", a "."
+            
             if (email.Contains("@"))
             {
                 string[] providerOptions = { "seznam", "gmail" };
@@ -215,29 +242,26 @@ namespace InvoiceDownloader
                 {
                     if (email.Contains(provider))
                     {
-                        // Nastavit provider podle nalezeného řetězce
+                       
                         NewAccount account = new NewAccount
                         {
                             Email = email,
                             Password = password,
                             Provider = provider
                         };
-                        // Provádět další akce s vytvořeným účtem
-                        // Zapsat účet do souboru
+                        
                         string accountString = $"{account.Email}_{account.Password}_{account.Provider}";
-                        //WriteAccountToFile(accountString);
+                        
 
                         emailTextBox.Text = "Email";
                         emailTextBox.FontWeight = FontWeights.Bold;
                         passwordTextBox.Text = "Heslo";
                         passwordTextBox.FontWeight = FontWeights.Bold;
 
-                        //AddAccountToList(email);
-
-                        // Přidat e-mail do souboru
+                       
                         AddAccountToFile(email, password, provider);
 
-                        // Načíst e-maily znovu pro zobrazení aktualizovaných údajů
+                        
                         LoadAccounts();
 
                         return;
@@ -289,18 +313,12 @@ namespace InvoiceDownloader
             {
                 if (IsAccountSelected)
                 {
-                    Task newTask = new Task
-                    {
-                        Email = selectedAccount.Email,
-                        Password = selectedAccount.Password,
-                        Provider = selectedAccount.Provider,
-                        Store = button.Content.ToString()
-                    };
+                    selectedAccount.Store = button.Content.ToString();
+                    Window1 newWindow = new Window1(selectedAccount);
+                    newWindow.ShowDialog();
 
-                    Window1 newTaskWindow = new Window1(newTask);
-                    newTaskWindow.ShowDialog();
-
-                    // Handle any further actions after the new window is closed
+                    
+;                    
                 }
                 else
                 {
@@ -328,13 +346,8 @@ namespace InvoiceDownloader
     public string Password { get; set; }
 
     public string Provider { get; set; }
-     }
-
-    public class Task : SelectedAccount
-    {
         public string Store { get; set; }
-        public string date { get; set; }
-
-        
+        public string Date { get; set; }
     }
+
 }
